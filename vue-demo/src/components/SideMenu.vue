@@ -4,6 +4,7 @@
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
+    router	
   >
     <el-submenu :index="item.id" v-for="(item, index) in menus" :key="index">
       <!-- 菜单名 -->

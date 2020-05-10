@@ -1,5 +1,5 @@
 <template>
-  <el-menu :default-active="activeIndex" class="header-wrap" mode="horizontal">
+  <el-menu class="header-wrap" mode="horizontal">
     <el-menu-item index="1">简介</el-menu-item>
     <el-menu-item index="1">TodoList</el-menu-item>
   </el-menu>

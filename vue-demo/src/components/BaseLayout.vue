@@ -3,7 +3,9 @@
     <el-header><Header /></el-header>
     <el-container>
       <el-aside width="200px"><SideMenu :menus="sideMenus"/></el-aside>
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>

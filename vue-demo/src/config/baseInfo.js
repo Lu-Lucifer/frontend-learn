@@ -1,6 +1,6 @@
 export const sideMenus = [
   {
-    id: '1',
+    id: '/router',
     title: 'vue-router',
     groups: [
       {
@@ -8,11 +8,11 @@ export const sideMenus = [
         groupName: '路由加载',
         children: [
           {
-            id: '1-1',
+            id: '/router/lazy',
             title: '懒加载',
           },
           {
-            id: '1-2',
+            id: '/router/config',
             title: '加载配置化',
           },
         ],
