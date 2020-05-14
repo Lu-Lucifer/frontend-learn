@@ -1,0 +1,25 @@
+{
+	"name": "webcat-demo",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "webpack-dev-server --config ./build/webpack.config.js",
+		"build": "webpack --config ./build/webpack.config.js",
+		"serve": "node ./app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "eminoda",
+	"license": "ISC",
+	"dependencies": {
+		"koa": "^2.11.0",
+		"koa-router": "^8.0.8",
+		"koa-static": "^5.0.0"
+	},
+	"devDependencies": {
+		"html-webpack-plugin": "^4.3.0",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11",
+		"webpack-dev-server": "^3.11.0"
+	}
+}
