@@ -1,8 +1,12 @@
 <template>
   <el-container>
-    <el-header><Header /></el-header>
+    <el-header>
+      <Header />
+    </el-header>
     <el-container>
-      <el-aside width="200px"><SideMenu :menus="sideMenus"/></el-aside>
+      <el-aside width="200px">
+        <SideMenu :menus="sideMenus" />
+      </el-aside>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -11,17 +15,17 @@
 </template>
 
 <script>
-import SideMenu from './SideMenu';
-import Header from './Header';
+import SideMenu from "./SideMenu";
+import Header from "./Header";
 // TODO: 转到 vuex bootstrap 方式来加载
-import { sideMenus } from '../config/baseInfo';
+import { sideMenus } from "../config/baseInfo";
 export default {
-  name: 'BaseLayout',
+  name: "BaseLayout",
   data() {
-    return { sideMenus }
+    return { sideMenus };
   },
   components: { SideMenu, Header }
-}
+};
 </script>
 
 <style lang="less" scoped>

@@ -1,24 +1,15 @@
 # vue-demo
 
-## Project setup
-```
-npm install
-```
+## 路由加载方式
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### 正常加载
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 懒加载 lazy
 
-### Lints and fixes files
-```
-npm run lint
-```
+### 动态加载
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+在 router.before 定义
+
+如果 vuex.addRoutes 无定义，则异步 fetch，塞到 vuex.addRoutes
+
+和 menus 约定

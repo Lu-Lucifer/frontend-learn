@@ -1,11 +1,9 @@
 <template>
-  <div>config</div>
+  <div>动态路由2</div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
