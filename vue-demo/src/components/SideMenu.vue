@@ -1,55 +1,42 @@
 <template>
-  <el-menu
-    default-active="0"
-    class="el-menu-vertical-demo"
-    :default-openeds="['/router']"
-    @open="handleOpen"
-    @close="handleClose"
-    router
+  <a-menu
+    style="width: 256px"
+    :open-keys.sync="openKeys"
+    mode="inline"
+    @click="handleClick"
   >
-    <el-submenu :key="index" :index="item.id" v-for="(item, index) in menus">
-      <!-- 菜单名 -->
-      <template slot="title">
-        <i class="el-icon-location"></i>
-        <span>{{ item.title }}</span>
-      </template>
-      <!-- 菜单分组 -->
-      <el-menu-item-group :index="item.id" v-for="(item, index) in item.groups" :key="index">
-        <template slot="title">{{ item.groupName }}</template>
-        <!-- 子菜单 -->
-        <el-menu-item
-          :index="item.id"
-          v-for="(item, index) in item.children"
-          :key="index"
-        >{{ item.title }}</el-menu-item>
-      </el-menu-item-group>
-    </el-submenu>
-  </el-menu>
+    <a-sub-menu v-for="item in list" :key="item.router">
+      <span slot="title"
+        ><a-icon type="setting" /><span>{{ item.title }}</span></span
+      >
+      <a-menu-item v-for="item in item.children" :key="item.key">
+        {{ item.title }}
+      </a-menu-item>
+    </a-sub-menu>
+  </a-menu>
 </template>
 
 <script>
 export default {
-  props: {
-    menus: {
-      default() {
-        return [];
-      },
-      type: Array
-    }
-  },
   data() {
     return {
-      openKeys: [0]
+      list: this.$store.state.sideMenus,
+      openKeys: ['router'],
     };
   },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+  watch: {
+    openKeys(val) {
+      console.log('openKeys', val);
     },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    }
-  }
+  },
+  methods: {
+    handleClick(e) {
+      console.log('click', e);
+    },
+    titleClick(e) {
+      console.log('titleClick', e);
+    },
+  },
 };
 </script>
 

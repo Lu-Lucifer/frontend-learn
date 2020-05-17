@@ -1,24 +1,22 @@
 <template>
-  <el-menu class="header-wrap" mode="horizontal">
-    <el-menu-item index="1">简介</el-menu-item>
-    <el-menu-item index="1">TodoList</el-menu-item>
-  </el-menu>
+  <a-menu v-model="current" mode="horizontal">
+    <a-menu-item key="mail"> <a-icon type="mail" />Navigation One </a-menu-item>
+    <a-menu-item key="app" disabled>
+      <a-icon type="appstore" />Navigation Two
+    </a-menu-item>
+  </a-menu>
 </template>
 
 <script>
 export default {
-
+  data() {
+    return {
+      current: ['mail'],
+    };
+  },
 }
 </script>
 
 
 <style lang="less" scoped>
-.header-wrap {
-  background: rgb(64, 158, 255);
-  .el-menu-item {
-    color: #fff;
-  }
-  display: flex;
-  justify-content: center;
-}
 </style>

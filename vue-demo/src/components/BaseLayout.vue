@@ -1,17 +1,12 @@
 <template>
-  <el-container>
-    <el-header>
-      <Header />
-    </el-header>
-    <el-container>
-      <el-aside width="200px">
-        <SideMenu :menus="sideMenus" />
-      </el-aside>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
-    </el-container>
-  </el-container>
+  <a-layout>
+    <a-layout-header><Header /></a-layout-header>
+    <a-layout>
+      <a-layout-sider><SideMenu /></a-layout-sider>
+      <a-layout-content><router-view></router-view></a-layout-content>
+    </a-layout>
+    <a-layout-footer>Footer</a-layout-footer>
+  </a-layout>
 </template>
 
 <script>
@@ -24,23 +19,12 @@ export default {
   data() {
     return { sideMenus };
   },
-  components: { SideMenu, Header }
+  components: { Header, SideMenu }
 };
 </script>
 
 <style lang="less" scoped>
-.el-container {
-  min-height: 500px;
-  .el-aside {
-    background-color: #fff;
-    color: #333;
-  }
-
-  .el-main {
-    background-color: #f2f2f2;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
-  }
+.ant-layout-header {
+  background-color: #fff;
 }
 </style>
