@@ -1,7 +1,7 @@
 const dynamicRoutes = [
   {
     path: '/router/dynamic1',
-    componentName: 'Dynamic1',
+    componentName: '/router/Dynamic1',
     name: 'dynamic1',
     meta: {
       id: '1-3',
@@ -11,7 +11,7 @@ const dynamicRoutes = [
   },
   {
     path: '/router/dynamic2',
-    componentName: 'Dynamic2',
+    componentName: '/router/Dynamic2',
     name: 'dynamic2',
     meta: {
       id: '1-4',

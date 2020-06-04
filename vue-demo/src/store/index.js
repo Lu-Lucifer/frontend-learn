@@ -16,7 +16,7 @@ const store = new Vuex.Store({
     },
   },
   mutations: {
-    initMenus(state, data) {
+    initMenus(state) {
       state.menus = [
         {
           type: '1',
@@ -40,9 +40,11 @@ const store = new Vuex.Store({
       }
       console.log(state.menus);
     },
+    // 更新授权状态，假设有 token
     updateAuth(state, data) {
       state.isAuth = data;
     },
+    // 更新菜单，约定 meta.id 为菜单唯一标识
     updateMenus(state, data) {
       for (let router of data) {
         const type = router.meta.id.split('-')[0];

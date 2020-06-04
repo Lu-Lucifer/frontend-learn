@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       list: this.$store.state.menus,
-      openKeys: ['router'],
+      openKeys: ['1'],
     };
   },
   watch: {

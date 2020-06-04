@@ -6,7 +6,7 @@
 export default {
   data() {
     return {
-      doc: require('./doc/Common.md')
+      doc: require('./doc/Dynamic.md')
     }
   },
   created() { }

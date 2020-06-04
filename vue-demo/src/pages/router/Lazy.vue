@@ -1,11 +1,16 @@
 <template>
-  <div>延迟加载</div>
+  <div class="markdown-body" v-html="doc"></div>
 </template>
 
 <script>
 export default {
-
-}
+  data() {
+    return {
+      doc: require('./doc/Lazy.md')
+    }
+  },
+  created() { }
+};
 </script>
 
 <style>
