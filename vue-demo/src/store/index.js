@@ -2,12 +2,12 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 // import { sideMenus } from '../config/baseInfo';
 import routes from '../router/routes';
-
+import { buildSideMenus } from './helper';
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     menus: [],
-    routes: routes || [],
+    routes: routes || [], //最外层页面不做判断
     isAuth: false,
   },
   getters: {
@@ -16,6 +16,11 @@ const store = new Vuex.Store({
     },
   },
   mutations: {
+    buildSideMenus(state) {
+      if (!state.menus || state.menus.length === 0) {
+        state.menus = buildSideMenus(state.menus, state.routes[0].children);
+      }
+    },
     initMenus(state) {
       state.menus = [
         {
@@ -56,7 +61,6 @@ const store = new Vuex.Store({
         }
       }
       const routes = [...state.routes, ...data];
-      console.log(routes);
     },
   },
 });

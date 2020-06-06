@@ -2,8 +2,10 @@
   <a-layout>
     <a-layout-header><Header /></a-layout-header>
     <a-layout>
-      <a-layout-sider><SideMenu /></a-layout-sider>
-      <a-layout-content><router-view></router-view></a-layout-content>
+      <a-layout-sider theme="light"><SideMenu /></a-layout-sider>
+      <a-layout-content>
+        <RouterLayout />
+      </a-layout-content>
     </a-layout>
     <a-layout-footer>Footer</a-layout-footer>
   </a-layout>
@@ -12,14 +14,13 @@
 <script>
 import SideMenu from "./SideMenu";
 import Header from "./Header";
-// TODO: 转到 vuex bootstrap 方式来加载
-import { sideMenus } from "../config/baseInfo";
+import RouterLayout from "./RouterLayout";
 export default {
   name: "BaseLayout",
   data() {
-    return { sideMenus };
+    return {};
   },
-  components: { Header, SideMenu }
+  components: { Header, SideMenu, RouterLayout }
 };
 </script>
 

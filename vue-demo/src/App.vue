@@ -1,16 +1,12 @@
 <template>
-  <BaseLayout />
+  <router-view></router-view>
 </template>
 
 <script>
-import BaseLayout from './components/BaseLayout.vue'
 
 export default {
   name: 'App',
-  components: {
-    // 组件局部注册
-    BaseLayout
-  }
+  components: {}
 }
 </script>
 

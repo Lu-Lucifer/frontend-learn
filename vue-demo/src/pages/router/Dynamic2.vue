@@ -1,5 +1,5 @@
 <template>
-  <div>动态路由2</div>
+  <div><div class="ant-col ant-col-4 ant-form-item-label ant-form-item-required"><label class="" title="Field B">Field B</label></div></div>
 </template>
 
 <script>

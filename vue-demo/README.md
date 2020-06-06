@@ -1,15 +1,15 @@
 # vue-demo
 
-## 路由加载方式
+## 项目涉及内容
 
-### 正常加载
-
-### 懒加载 lazy
-
-### 动态加载
-
-在 router.before 定义
-
-如果 vuex.addRoutes 无定义，则异步 fetch，塞到 vuex.addRoutes
-
-和 menus 约定
+- 路由
+  - 普通路由
+  - 懒加载
+  - 动态路由
+- antd-vue
+  - 表单
+    - 上传 upload
+      - 自定义上传方法
+      - 图片回显
+    - 动态校验
+    - 非标准 form-item 排列

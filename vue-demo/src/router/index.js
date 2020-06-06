@@ -18,16 +18,16 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const _vue = router.app;
   const isAuth = store.state.isAuth;
-  store.commit('initMenus');
+  store.commit('buildSideMenus');
   if (isAuth) {
     next();
   } else {
     fetchDynamicRoutes()
       .then((dynamicRoutes) => {
-        _vue.$store.commit('updateAuth', true);
-        const routes = helper.generatorRoutes(dynamicRoutes);
-        _vue.$store.commit('updateMenus', routes);
-        _vue.$router.addRoutes(routes);
+        // _vue.$store.commit('updateAuth', true);
+        // const routes = helper.generatorRoutes(dynamicRoutes);
+        // _vue.$store.commit('updateMenus', routes);
+        // _vue.$router.addRoutes(routes);
         next();
       })
       .catch((err) => {
