@@ -1,66 +1,27 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import { sideMenus } from '../config/baseInfo';
-import routes from '../router/routes';
-import { buildSideMenus } from './helper';
+import { buildSideMenus } from '@/utils';
+
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
-    menus: [],
-    routes: routes || [], //最外层页面不做判断
-    isAuth: false,
+    permissionList: [],
+    sideMenus: [],
   },
   getters: {
-    isNewRoutes: (state) => (routes) => {
-      return routes === state.routes;
+    sideMenus(state) {
+      return state.sideMenus;
+    },
+    permissionList(state) {
+      return state.permissionList;
     },
   },
   mutations: {
-    buildSideMenus(state) {
-      if (!state.menus || state.menus.length === 0) {
-        state.menus = buildSideMenus(state.menus, state.routes[0].children);
-      }
+    SET_SIDE_MENUS(state, data) {
+      state.sideMenus = buildSideMenus(state.sideMenus, data);
     },
-    initMenus(state) {
-      state.menus = [
-        {
-          type: '1',
-          title: '路由',
-          children: [],
-        },
-        {
-          type: '2',
-          title: '我的',
-          children: [],
-        },
-      ];
-      for (let router of state.routes) {
-        const type = router.meta.id.split('-')[0];
-        for (let item of state.menus) {
-          if (item.type == type) {
-            item.children.push(router);
-            break;
-          }
-        }
-      }
-      console.log(state.menus);
-    },
-    // 更新授权状态，假设有 token
-    updateAuth(state, data) {
-      state.isAuth = data;
-    },
-    // 更新菜单，约定 meta.id 为菜单唯一标识
-    updateMenus(state, data) {
-      for (let router of data) {
-        const type = router.meta.id.split('-')[0];
-        for (let item of state.menus) {
-          if (item.type == type) {
-            item.children.push(router);
-            break;
-          }
-        }
-      }
-      const routes = [...state.routes, ...data];
+    SET_PERMISSIONLIST(state, data) {
+      state.permissionList = data;
     },
   },
 });

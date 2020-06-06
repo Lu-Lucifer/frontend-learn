@@ -23,7 +23,7 @@ const routes = [
 - 结合 SplitChunksPlugin，分割不同的 chunks 文件
 - **使用 import() API**
 
-对于路由懒加载，将通过 import 来动态分离出对应的 component 组件文件，当请求该路由时，将额外请求 js 文件：
+路由懒加载基于第三种 import 方式实现。当请求对应路由时，将看到额外的 js 文件请求，为首屏加载提速：
 
 ![示意图](./lazy.gif)
 

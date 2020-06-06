@@ -1,6 +1,4 @@
-import Common from '../pages/router/Common.vue';
-import BaseLayout from '../components/BaseLayout.vue';
-import RouterLayout from '../components/RouterLayout.vue';
+import { BaseLayout, RouterLayout, Common, Lazy } from './routesMap';
 const routes = [
   {
     path: '/',
@@ -28,7 +26,7 @@ const routes = [
           {
             path: '/router/lazy',
             // webpack 会解析如下注释，对应输出 chunk 文件
-            component: () => import(/*webpackChunkName: "router-lazy"*/ '../pages/router/Lazy.vue'),
+            component: Lazy,
             meta: {
               id: '1-2',
               name: '懒加载',

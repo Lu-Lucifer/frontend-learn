@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-      list: this.$store.state.menus,
+      list: this.$store.getters.sideMenus,
       openKeys: ['1'],
       currentKey: this.$route.meta.id,
       selectedKeys: [this.$route.meta.id],

@@ -1,8 +1,8 @@
 ## 动态路由
 
-即使不是 SSR 服务端渲染，SPA 也可以通过权限的控制，做动态路由展示。
+即使不是 SSR 服务端渲染，SPA 也可以通过权限的控制，以动态路由的方式实现。
 
-比如当前页面，你无法从约定的 router 结构中找到，因为它通过后端接口返回的路由数据，请求对应的 component 组件文件渲染得到。
+比如当前页面，你无法从以往约定的 router 结构中找到，路由结构将通过后端接口解析生成。
 
 **怎么做呢？**
 
@@ -23,22 +23,26 @@ router.beforeEach((to, from, next) => {
 });
 ```
 
-再结合 webpack 的 **Code Splitting** 机制，使这些动态路由文件懒加载得到：
+配合 webpack 的 **Code Splitting** 机制，使这些动态路由文件懒加载得到：
 
 ```js
-function generatorRoutes(arr) {
-  return arr.map((router) => {
+export function normalizeRoutes(routes) {
+  return routes.map((router) => {
     return {
       path: router.path,
-      component: () => import(/*webpackChunkName: "router-dynamic"*/ `../pages${router.componentName}.vue`),
+      component: _parseComponent(router.componentName),
       meta: router.meta,
-      children: generatorRoutes(router.children),
+      children: Array.isArray(router.children) ? normalizeRoutes(router.children) : [],
     };
   });
 }
+
+function _parseComponent(componentName) {
+  return routesMap[componentName] || (() => import(/*webpackChunkName: "router-dynamic"*/ `../pages${componentName}.vue`));
+}
 ```
 
-另外，结合 Vuex 和数据持久化方式，减少向后端的多次请求。
+另外，搭配 Vuex 和数据持久化方式，能使得整个权限流程更为“丝滑”。
 
 ### Tips
 

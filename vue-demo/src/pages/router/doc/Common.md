@@ -1,6 +1,6 @@
 ## 常规路由
 
-通过最基本的 routes 定义来实现：
+这是“最最最”基本的路由使用方式：
 
 ```js
 import Common from '../pages/router/Common.vue';
@@ -8,7 +8,7 @@ import Common from '../pages/router/Common.vue';
 const routes = [
   {
     path: '/router/common',
-    component: Common
+    component: Common,
   },
 ];
 ```
