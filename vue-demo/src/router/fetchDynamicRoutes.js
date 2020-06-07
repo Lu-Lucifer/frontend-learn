@@ -11,7 +11,7 @@ const dynamicRoutes = [
         meta: {
           id: '1',
           name: '路由',
-          icon: 'setting',
+          icon: 'menu',
         },
         children: [
           {
@@ -33,18 +33,49 @@ const dynamicRoutes = [
           },
           {
             path: '/router/dynamic1',
-            componentName: '/router/Dynamic1',
+            componentName: '/router/Dynamic',
             meta: {
               id: '1-3',
-              name: '动态路由1',
+              name: '动态路由',
+            },
+          },
+        ],
+      },
+      {
+        path: '/antd',
+        componentName: 'RouterLayout',
+        redirect: '/antd/form/grid',
+        meta: {
+          id: '2',
+          name: 'AntDesign Vue',
+          icon: 'ant-design',
+        },
+        children: [
+          {
+            path: '/antd/form/grid',
+            componentName: '/antd/form/Grid',
+            meta: {
+              id: '2-1',
+              name: '排列布局',
+              group: 'form',
             },
           },
           {
-            path: '/router/dynamic2',
-            componentName: '/router/Dynamic2',
+            path: '/antd/form/validator',
+            componentName: '/antd/form/Validator',
             meta: {
-              id: '1-4',
-              name: '动态加载2',
+              id: '2-2',
+              name: '动态校验',
+              group: 'form',
+            },
+          },
+          {
+            path: '/antd/form/upload',
+            componentName: '/antd/form/Upload',
+            meta: {
+              id: '2-3',
+              name: '图片上传',
+              group: 'form',
             },
           },
         ],

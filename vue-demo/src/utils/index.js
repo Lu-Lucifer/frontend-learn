@@ -7,23 +7,54 @@ import * as routesMap from '@/router/routesMap';
  * @param {*} routes
  */
 export function buildSideMenus(menus, routes) {
+  let groups = [];
   for (const route of routes) {
-    const { id, name, icon } = route.meta;
-    const menu = {
+    const { id, name, icon, group } = route.meta;
+    let menu = {
       key: id, // 菜单唯一表示
       name, //菜单名称
       path: route.path, // 跳转地址
       icon,
+      group,
     };
     if (route.children) {
-      menu.children = [];
-      menu.children = buildSideMenus(menu.children, route.children);
+      const children = buildSideMenus([], route.children);
+      const groups = buildGroups(children);
+      if (groups && groups.length > 0) {
+        menu.groups = groups;
+      } else {
+        menu.children = children;
+      }
     }
     menus.push(menu);
   }
   return menus;
 }
+function buildGroups(list) {
+  let groups = [];
+  for (let item of list) {
+    const group = item.group;
+    if (group) {
+      const groupIndex = _getIndexOfGroup(groups, group);
+      if (groupIndex !== -1) {
+        groups[groupIndex].children.push(item);
+      } else {
+        groups.push({ group, children: [item] });
+      }
+    }
+  }
+  return groups;
+}
 
+function _getIndexOfGroup(list, group) {
+  for (let i = 0; i < list.length; i++) {
+    const item = list[i];
+    if (item.group === group) {
+      return i;
+    }
+  }
+  return -1;
+}
 /**
  * 标准化路由
  *
