@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="markdown-body" v-html="doc"></div>
+    <!-- <div class="markdown-body" v-html="doc"></div> -->
     <a-card title="动态表单 Demo">
       <a-form :form="form">
         <a-row
@@ -91,16 +91,33 @@ export default {
     },
     submit() {
       this.form.validateFields((err, values) => {
-        if(!err){
+        if (!err) {
           console.log('表单验证 ok，可以提交')
           console.log(values)
         }
       })
     }
   },
-  created() {
+  beforeCreate() {
     this.form = this.$form.createForm(this, {});
+  },
+  created() {
+    const self = this;
     this.addDynamicGroup()
+    setTimeout(function() {
+      // 接口返回
+      const tree = [{ username: '前端雨爸', nickname: 'eminoda' }]
+      self.$nextTick(function() {
+        for (let i = 0; i < tree.length; i++) {
+          const item = tree[i]
+          for (let key in item) {
+            self.form.setFieldsValue({
+              [`tree[${i}][${key}]`]: item[key]
+            })
+          }
+        }
+      })
+    }, 1000)
   }
 }
 </script>
