@@ -70,10 +70,19 @@ const dynamicRoutes = [
             },
           },
           {
+            path: '/antd/form/dynamicFormItem',
+            componentName: '/antd/form/DynamicFormItem',
+            meta: {
+              id: '2-3',
+              name: '动态表单',
+              group: 'form',
+            },
+          },
+          {
             path: '/antd/form/upload',
             componentName: '/antd/form/Upload',
             meta: {
-              id: '2-3',
+              id: '2-4',
               name: '图片上传',
               group: 'form',
             },
