@@ -37,20 +37,20 @@ export default {
   },
   computed: {
     fileList() {
+      let list = []
       if (this.value) {
         if (Array.isArray(this.value)) {
-          const list = []
           for (let item of this.value) {
             if (item.url) {
               list.push(this.buildPreviewPic(item))
             }
           }
-          return list
-        } else if (this.value) {
-          return [this.buildPreviewPic(this.value)]
+        } else {
+          list = [this.buildPreviewPic(this.value)]
         }
       }
-      return []
+      console.log(list)
+      return list
     }
   },
   methods: {
@@ -74,12 +74,15 @@ export default {
           url: item
         }
       }
-      return {
-        uid: item.uid || String(Date.now()),
-        name: item[this.fieldMapping.name] || item[this.fieldMapping.url],
-        status: 'done',
-        url: item[this.fieldMapping.url]
+      if (item.url||item[this.fieldMapping.url]) {
+        return {
+          uid: item.uid || String(Date.now()),
+          name: item[this.fieldMapping.name] || item[this.fieldMapping.url],
+          status: 'done',
+          url: item[this.fieldMapping.url]
+        }
       }
+
     },
     async handleChange({ file, fileList }) {
       this.isMutiple = Array.isArray(this.value);
